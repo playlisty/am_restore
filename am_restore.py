@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 #
 # This is a simple Python script which tries to re-create playlists from an 'Apple Media Services information' archive
 #
