@@ -31,13 +31,18 @@ There are 2 steps to this process, and you'll need a Mac for the second:
 # Example command lines:
 Reads an Apple Media Services information zip file from your Downloads directory and then creates an Archive1.plif, also in your downloads directory:
 
-`python3 am_restore.py ~/Downloads/Apple\ Media\ Services\ information.zip --plif_file ~/Downloads/Archive1.plif`
+`% python3 am_restore.py ~/Downloads/Apple\ Media\ Services\ information.zip --plif_file ~/Downloads/Archive1.plif`
 
 As above, but extracts just 2 playlists to Archive1.plif: "80s Party Mix" and "Apple Music Liked Tracks":
 
-`python3 am_restore.py ~/Downloads/Apple\ Media\ Services\ information.zip --plif_file ~/Downloads/Archive1.plif --names "80s Party Mix" "Apple Music Loved Tracks"`
+`% python3 am_restore.py ~/Downloads/Apple\ Media\ Services\ information.zip --plif_file ~/Downloads/Archive1.plif --names "80s Party Mix" "Apple Music Loved Tracks"`
 
 Note: the following "special" playlists can be specified on the command line using the --names parameter (they will not be included in the output otherwise):
 - "Apple Music Loved Tracks": All tracks you ever "loved" on Apple Music
 - "Apple Music Disliked Tracks": All tracks you disliked on Apple Music
 - "Apple Music Library Tracks": Tracks in your music library which don't exist also in playlists
+
+You can extract your Apple Music "Likes" to a CSV file by combining the output of am_restore.py with extract_playlists.py, as follows:
+
+`% python3 am_restore.py ~/Downloads/Apple\ Media\ Services\ information.zip --plif_file ~/Downloads/Temp.plif --names "Apple Music Loved Tracks"
+% python3 extract_playlists.py ~/Downloads/Temp.plif`
