@@ -28,16 +28,16 @@ There are 2 steps to this process, and you'll need a Mac for the second:
 4. Wait until finished. Observe you have a new file called "Apple Music Library Archive.plif".
 5. Open Playlisty and use the files tab to import the new PLIF file from the above directory. From within Playlisty you can then select which playlists you want to import, as you would with any multi-playlist import.
 
-# Example command-lines:
+# Example command lines:
 Reads an Apple Media Services information zip file from your Downloads directory and then creates an Archive1.plif, also in your downloads directory:
 
 `python3 am_restore.py ~/Downloads/Apple\ Media\ Services\ information.zip --plif_file ~/Downloads/Archive1.plif`
 
-As above, but extracks just 2 playlists to Archive1.plif: "80s Party Mix" and "Apple Music Liked Tracks":
+As above, but extracts just 2 playlists to Archive1.plif: "80s Party Mix" and "Apple Music Liked Tracks":
 
 `python3 am_restore.py ~/Downloads/Apple\ Media\ Services\ information.zip --plif_file ~/Downloads/Archive1.plif --names "80s Party Mix" "Apple Music Loved Tracks"`
 
-Note: the following "special" playlists are available and must be specified on the command line using the --names parameter or they will not be included in the output:
-- "Apple Music Loved Tracks": All tracks you loved on Apple Music
+Note: the following "special" playlists can be specified on the command line using the --names parameter (they will not be included in the output otherwise):
+- "Apple Music Loved Tracks": All tracks you ever "loved" on Apple Music
 - "Apple Music Disliked Tracks": All tracks you disliked on Apple Music
 - "Apple Music Library Tracks": Tracks in your music library which don't exist also in playlists
