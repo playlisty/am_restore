@@ -44,5 +44,5 @@ Note: the following "special" playlists can be specified on the command line usi
 
 You can extract your Apple Music "Likes" to a CSV file by combining the output of am_restore.py with extract_playlists.py, as follows:
 
-`% python3 am_restore.py ~/Downloads/Apple\ Media\ Services\ information.zip --plif_file ~/Downloads/Temp.plif --names "Apple Music Loved Tracks"
-% python3 extract_playlists.py ~/Downloads/Temp.plif`
+`% python3 am_restore.py ~/Downloads/Apple\ Media\ Services\ information.zip --plif_file ~/Downloads/Temp.plif --names "Apple Music Loved Tracks"`
+`% python3 extract_playlists.py ~/Downloads/Temp.plif`
