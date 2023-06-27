@@ -24,6 +24,20 @@ There are 2 steps to this process, and you'll need a Mac for the second:
 ## Import it into your Apple Music account
 1. Download the file am_restore.py (above) to the same directory as your "Apple Media Services information.zip" file
 2. Start a command prompt in the same directory (in Finder, right-click on the folder name and select "New Terminal at Folder")
-3. At the prompt, type `chmod +x am_restore.py` and then hit enter. This makes the file executable.
-4. Then type: `./am_restore.py` and hit enter, to run the script. Wait until finished. Observe you have a new file called "Apple Music Library Archive.plif".
+3. At the prompt, type `python3 am_restore.py` and then hit enter
+4. Wait until finished. Observe you have a new file called "Apple Music Library Archive.plif".
 5. Open Playlisty and use the files tab to import the new PLIF file from the above directory. From within Playlisty you can then select which playlists you want to import, as you would with any multi-playlist import.
+
+# Example command-lines:
+Reads an Apple Media Services information zip file from your Downloads directory and then creates an Archive1.plif, also in your downloads directory:
+
+`python3 am_restore.py ~/Downloads/Apple\ Media\ Services\ information.zip --plif_file ~/Downloads/Archive1.plif`
+
+As above, but extracks just 2 playlists to Archive1.plif: "80s Party Mix" and "Apple Music Liked Tracks":
+
+`python3 am_restore.py ~/Downloads/Apple\ Media\ Services\ information.zip --plif_file ~/Downloads/Archive1.plif --names "80s Party Mix" "Apple Music Loved Tracks"`
+
+Note: the following "special" playlists are available and must be specified on the command line using the --names parameter or they will not be included in the output:
+- "Apple Music Loved Tracks": All tracks you loved on Apple Music
+- "Apple Music Disliked Tracks": All tracks you disliked on Apple Music
+- "Apple Music Library Tracks": Tracks in your music library which don't exist also in playlists
