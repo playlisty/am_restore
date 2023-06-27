@@ -33,7 +33,7 @@ Reads an Apple Media Services information zip file from your Downloads directory
 
 `% python3 am_restore.py ~/Downloads/Apple\ Media\ Services\ information.zip --plif_file ~/Downloads/Archive1.plif`
 
-As above, but extracts just 2 playlists to Archive1.plif: "80s Party Mix" and "Apple Music Liked Tracks":
+As above, but extracts just 2 playlists to Archive1.plif: "80s Party Mix" and "Apple Music Loved Tracks":
 
 `% python3 am_restore.py ~/Downloads/Apple\ Media\ Services\ information.zip --plif_file ~/Downloads/Archive1.plif --names "80s Party Mix" "Apple Music Loved Tracks"`
 
