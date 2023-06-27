@@ -112,7 +112,7 @@ if __name__ == "__main__":
     next(reader, None)  # Skip header row
     likes_dislikes = list(reader)
 
-# Create a dictionary of tracks which we can later use to find Apple Music catalogId's for playlist entries
+# Create dictionaries of tracks which we can later use to find Apple Music catalogId's for playlist entries
     track_lookup = {}
     for am_track in am_tracks:
         track_id = am_track.get('Track Identifier', -1)
