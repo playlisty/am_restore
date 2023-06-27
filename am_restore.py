@@ -104,11 +104,11 @@ if __name__ == "__main__":
     with unzipped.open("Apple Music Library Activity.json", 'r') as json_file:
         am_actions = json.load(json_file)
 
-    csv_file = io.StringIO(
+    likes = io.StringIO(
         ams.read("Apple_Media_Services/Apple Music Activity/Apple Music Likes and Dislikes.csv").decode(),
         newline=''
     )
-    reader = csv.reader(csv_file, delimiter=',')
+    reader = csv.reader(likes, delimiter=',')
     next(reader, None)  # Skip header row
     likes_dislikes = list(reader)
 
@@ -173,7 +173,7 @@ if __name__ == "__main__":
         latest_tracks[playlist_name] = playlist
 
 # Next process likes & dislikes:
-    csv_file = []
+    likes = []
     dislikes = []
     for row in likes_dislikes:
         liked_disliked_track = {}
@@ -186,13 +186,13 @@ if __name__ == "__main__":
         liked_disliked_track["Apple Music Track Identifier"] = row[4]
 
         if row[1] == 'LOVE':
-            csv_file.append(PLTrack(liked_disliked_track))
+            likes.append(PLTrack(liked_disliked_track))
         elif row[1] == 'DISLIKE':
             dislikes.append(PLTrack(liked_disliked_track))
 
     playlist_name = "Apple Music Loved Tracks"
     if playlist_name in args.names:
-        playlist = PLPlaylist(playlist_name, "Tracks you've loved in Apple Music", csv_file)
+        playlist = PLPlaylist(playlist_name, "Tracks you've loved in Apple Music", likes)
         latest_tracks[playlist_name] = playlist
 
     playlist_name = "Apple Music Disliked Tracks"
