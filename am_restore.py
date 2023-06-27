@@ -121,7 +121,7 @@ if __name__ == "__main__":
         entry = PLTrack(am_track)
         track_lookup[track_id] = entry
 
-# Create a list of playlists we can see have been deleted at some point so can ignore
+# Create lists of playlists & tracks we can see have been deleted at some point so can ignore
     deleted_playlists = []
     deleted_tracks = []
     for action in am_actions:
