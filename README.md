@@ -12,7 +12,7 @@ You can contact us using the "Contact Us" link on the Playlisty Settings page.
 For legal reasons Apple retain a significant amount of data on you and your usage of their services. You can request an archive file of this data from them and, by using this script on the Apple Music service files, we should be able to re-create some or all of your missing playlists.
 
 # What's the process?
-There are 2 steps to this process, and you'll need a Mac for the second:
+There are 2 steps to this process, and you'll need a Mac for the second (it might work on other OS's but we haven't tested it):
 
 ## Request your "Apple Media Services information" from Apple
 1. Log-on to https://privacy.apple.com using the Apple Id that you use for Apple Music (this is very important if you use different Ids for Apple Music & iCloud)
