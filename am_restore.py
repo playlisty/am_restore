@@ -77,40 +77,40 @@ if __name__ == "__main__":
         download_file = io.BytesIO(zip_file.read())
 
     with zipfile.ZipFile(download_file) as root:
-
         content = io.BytesIO(
             root.read("Apple Media Services information/Apple_Media_Services.zip")
         )
-        ams = zipfile.ZipFile(content)
 
-        zipped = io.BytesIO(
-            ams.read("Apple_Media_Services/Apple Music Activity/Apple Music Library Playlists.json.zip")
-        )
-        unzipped = zipfile.ZipFile(zipped)
-        with unzipped.open("Apple Music Library Playlists.json", 'r') as json_file:
-            am_playlists = json.load(json_file)
+    ams = zipfile.ZipFile(content)
 
-        zipped = io.BytesIO(
-            ams.read("Apple_Media_Services/Apple Music Activity/Apple Music Library Tracks.json.zip")
-        )
-        unzipped = zipfile.ZipFile(zipped)
-        with unzipped.open("Apple Music Library Tracks.json", 'r') as json_file:
-            am_tracks = json.load(json_file)
+    zipped = io.BytesIO(
+        ams.read("Apple_Media_Services/Apple Music Activity/Apple Music Library Playlists.json.zip")
+    )
+    unzipped = zipfile.ZipFile(zipped)
+    with unzipped.open("Apple Music Library Playlists.json", 'r') as json_file:
+        am_playlists = json.load(json_file)
 
-        zipped = io.BytesIO(
-            ams.read("Apple_Media_Services/Apple Music Activity/Apple Music Library Activity.json.zip")
-        )
-        unzipped = zipfile.ZipFile(zipped)
-        with unzipped.open("Apple Music Library Activity.json", 'r') as json_file:
-            am_actions = json.load(json_file)
+    zipped = io.BytesIO(
+        ams.read("Apple_Media_Services/Apple Music Activity/Apple Music Library Tracks.json.zip")
+    )
+    unzipped = zipfile.ZipFile(zipped)
+    with unzipped.open("Apple Music Library Tracks.json", 'r') as json_file:
+        am_tracks = json.load(json_file)
 
-        csv_file = io.StringIO(
-            ams.read("Apple_Media_Services/Apple Music Activity/Apple Music Likes and Dislikes.csv").decode(),
-            newline=''
-        )
-        reader = csv.reader(csv_file, delimiter=',')
-        next(reader, None)  # Skip header row
-        likes_dislikes = list(reader)
+    zipped = io.BytesIO(
+        ams.read("Apple_Media_Services/Apple Music Activity/Apple Music Library Activity.json.zip")
+    )
+    unzipped = zipfile.ZipFile(zipped)
+    with unzipped.open("Apple Music Library Activity.json", 'r') as json_file:
+        am_actions = json.load(json_file)
+
+    csv_file = io.StringIO(
+        ams.read("Apple_Media_Services/Apple Music Activity/Apple Music Likes and Dislikes.csv").decode(),
+        newline=''
+    )
+    reader = csv.reader(csv_file, delimiter=',')
+    next(reader, None)  # Skip header row
+    likes_dislikes = list(reader)
 
 # Create a dictionary of tracks which we can later use to find Apple Music catalogId's for playlist entries
     track_lookup = {}
