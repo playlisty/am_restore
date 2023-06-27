@@ -179,7 +179,7 @@ if __name__ == "__main__":
         liked_disliked_track = {}
         desc = row[0].split(" - ")
         if len(desc) < 2:
-            print(f"Library track omitted (incomplete description): {row[0]}")
+            print(f"Track skipped (incomplete description): {row[0]}")
             continue
         liked_disliked_track["Title"] = desc[1]
         liked_disliked_track["Artist"] = desc[0]
