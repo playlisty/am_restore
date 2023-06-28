@@ -9,6 +9,7 @@ import io
 import argparse
 import csv
 
+# Define serialisable Track, Playlist & Archive classes
 
 class PLTrack:
 
@@ -40,6 +41,7 @@ class PLArchive:
     def save(self, outfile):
         json.dump(self, outfile, default=encode_data, ensure_ascii=False, indent=4)
 
+# Serialisation helper function, passed-in to json.dump
 
 def encode_data(data):
 
@@ -59,6 +61,7 @@ def encode_data(data):
 
 if __name__ == "__main__":
 
+# Parse command-line arguments. Also opens input file & creates files output file:
     parser = argparse.ArgumentParser()
 
     parser.add_argument("file", nargs="?",
@@ -73,9 +76,11 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
+# Read the input Zip file and extract the 4 files we will need into variables:
     with args.file as zip_file:
         download_file = io.BytesIO(zip_file.read())
-
+        
+    # Opens a Zip file within the Zip file:
     with zipfile.ZipFile(download_file) as root:
         content = io.BytesIO(
             root.read("Apple Media Services information/Apple_Media_Services.zip")
@@ -83,6 +88,7 @@ if __name__ == "__main__":
 
     ams = zipfile.ZipFile(content)
 
+    # Read playlists file:
     zipped = io.BytesIO(
         ams.read("Apple_Media_Services/Apple Music Activity/Apple Music Library Playlists.json.zip")
     )
@@ -90,6 +96,7 @@ if __name__ == "__main__":
     with unzipped.open("Apple Music Library Playlists.json", 'r') as json_file:
         am_playlists = json.load(json_file)
 
+    # Read library tracks file:
     zipped = io.BytesIO(
         ams.read("Apple_Media_Services/Apple Music Activity/Apple Music Library Tracks.json.zip")
     )
@@ -97,6 +104,7 @@ if __name__ == "__main__":
     with unzipped.open("Apple Music Library Tracks.json", 'r') as json_file:
         am_tracks = json.load(json_file)
 
+    # Read user actions file:
     zipped = io.BytesIO(
         ams.read("Apple_Media_Services/Apple Music Activity/Apple Music Library Activity.json.zip")
     )
@@ -104,6 +112,7 @@ if __name__ == "__main__":
     with unzipped.open("Apple Music Library Activity.json", 'r') as json_file:
         am_actions = json.load(json_file)
 
+    # Read likes & dislikes playlist file:
     likes = io.StringIO(
         ams.read("Apple_Media_Services/Apple Music Activity/Apple Music Likes and Dislikes.csv").decode(),
         newline=''
