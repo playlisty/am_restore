@@ -11,6 +11,7 @@ import csv
 
 # Define serialisable Track, Playlist & Archive classes
 
+
 class PLTrack:
 
     def __init__(self, track):
@@ -41,8 +42,8 @@ class PLArchive:
     def save(self, outfile):
         json.dump(self, outfile, default=encode_data, ensure_ascii=False, indent=4)
 
-# Serialisation helper function, passed-in to json.dump
 
+# Serialisation helper function, passed-in to json.dump
 def encode_data(data):
 
     if isinstance(data, PLArchive):
@@ -61,19 +62,15 @@ def encode_data(data):
 
 if __name__ == "__main__":
 
-# Parse command-line arguments. Also opens input file & creates files output file:
+    # Parse command-line arguments. Also opens input file & creates files output file:
     parser = argparse.ArgumentParser()
-
     parser.add_argument("file", nargs="?",
                         type=argparse.FileType("rb"),
                         default="Apple Media Services information.zip")
-
     parser.add_argument("--plif_file", nargs="?",
                         type=argparse.FileType("w"),
                         default="Apple Music Library Archive.plif")
-
     parser.add_argument("--names", nargs="*", default=[])
-
     args = parser.parse_args()
 
 # Read the input Zip file and extract the 4 files we will need into variables:
